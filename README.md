@@ -33,38 +33,38 @@ polycolOptions = {
 colorfulPolygon = L.polygon(h,
     {
         color : 'black',
-        fill : polycolOptions 
+        fill : polycolOptions
     }).addTo(map);
 ```
 ### Options
 Polycol options is an object with following properties:
 
- - data
-	 - *type* : `array`
-	 - *default* : None
-	 - *accepts* : objects as `{'stringColorName' : intPercentage}`
-	 - description :  main data that holds colors and their associated percentages
- - padding 
-	 - *type* : `int`
-	 - *default* : 1
-	 - *accepts* : from 0 to 100
-	 - description :  padding between two colors to create smoothness, from 0 to 100
- - noDataColor
+ - **data**
+     - *type* : `array`
+     - *default* : None
+     - *accepts* : objects as `{'stringColorName' : intPercentage}`
+     - description :  main data that holds colors and their associated percentages
+ - **padding**
+     - *type* : `int`
+     - *default* : 1
+     - *accepts* : from 0 to 100
+     - description :  padding between two colors to create smoothness, from 0 to 100
+ - **noDataColor**
      - *type* : `string`
-	 - *default* : 'rgb(50,50,50)'
-	 - *accepts* : RGB/HEX/browser accepted color string
-	 - description :  color for the part of polygon that has no data (remaining percentage)
- - orientation
-	 - *type* : `string`
-	 - *default* : 'horizontal'
-	 - *accepts* : 'horizontal', 'vertical'
-	 - description :  whether the gradient runs vertically or horizontally
+     - *default* : 'rgb(50,50,50)'
+     - *accepts* : RGB/HEX/browser accepted color string
+     - description :  color for the part of polygon that has no data (remaining percentage)
+ - **orientation**
+     - *type* : `string`
+     - *default* : 'horizontal'
+     - *accepts* : 'horizontal', 'vertical'
+     - description :  whether the gradient runs vertically or horizontally
 
 
 ### Changing Leaflet's canvas renderer
 
 Leaflet's default canvas renderer is *SVG*. To use polycol, this needs to be set to *canvas*.
-When you initialize Leaflet map, use `preferCanvas : true` in map options ( [docs](https://leafletjs.com/reference-1.0.0.html#map-prefercanvas) ): 
+When you initialize Leaflet map, use `preferCanvas : true` in map options ( [docs](https://leafletjs.com/reference-1.0.0.html#map-prefercanvas) ):
 
 ```javascript
 var map = L.map('map',
