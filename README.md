@@ -10,7 +10,7 @@ https://rightdroid.bitbucket.io/leaflet-polycol/
 
 With **leaflet-polycol**, you can fill a single polygon with multiple colors. Polycol uses canvas' *createLinearGradient* and only works when using Leaflet's Canvas renderer (*preferCanvas : true*).
 
-The primary drive behind the development was to use it as a kind of choropleth for a single polygon, ie to fill a polygon percentually with colors defined in legend.
+The primary drive behind the development was to use it as a kind of a primitive choropleth for a single polygon - to fill a polygon percentually with colors defined in legend.
 
 ***Warning***: Polycol overrites `L.Canvas.__fillStroke` function.
 
