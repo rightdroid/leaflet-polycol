@@ -12,12 +12,14 @@ With **leaflet-polycol**, you can fill a single polygon with multiple colors. Po
 
 The primary drive behind the development was to use it as a kind of choropleth for a single polygon, ie to fill a polygon percentually with colors defined in legend.
 
-### Requirements
+***Warning***: Polycol overrites `L.Canvas.__fillStroke` function.
+
+## Requirements
 
  - Leaflet 1.5.1+
  - Using canvas renderer in Leaflet (default is SVG renderer)
 
-### How to use
+## How to use
 
 Pass *polycol object* to polygon's `fill` property
 ```javascript
@@ -36,7 +38,9 @@ colorfulPolygon = L.polygon(h,
         fill : polycolOptions
     }).addTo(map);
 ```
-### Options
+
+## Options
+
 Polycol options is an object with following properties:
 
  - **data**
@@ -61,7 +65,7 @@ Polycol options is an object with following properties:
      - description :  whether the gradient runs vertically or horizontally
 
 
-### Changing Leaflet's canvas renderer
+## Changing Leaflet's canvas renderer
 
 Leaflet's default canvas renderer is *SVG*. To use polycol, this needs to be set to *canvas*.
 When you initialize Leaflet map, use `preferCanvas : true` in map options ( [docs](https://leafletjs.com/reference-1.0.0.html#map-prefercanvas) ):
@@ -73,7 +77,7 @@ var map = L.map('map',
 });
 ```
 
-### Examples
+## Examples
 
 Check out the [demo ](https://rightdroid.bitbucket.io/leaflet-polycol/)and [main.js](https://rightdroid.bitbucket.io/leaflet-polycol/js/main.js) file.
 
