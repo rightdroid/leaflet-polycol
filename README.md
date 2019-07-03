@@ -12,7 +12,7 @@ With **leaflet-polycol**, you can fill a single polygon with multiple colors. Po
 
 The primary drive behind the development was to use it as a kind of a primitive choropleth for a single polygon - to fill a polygon percentually with colors defined in legend.
 
-***Warning***: Polycol overrites `L.Canvas.__fillStroke` function.
+***Warning***: Polycol overwrites `L.Canvas.__fillStroke` function.
 
 ## Requirements
 
