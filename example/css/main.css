@@ -1,0 +1,8 @@
+#map {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 600px;
+    width: 1200px;
+    border: 5px double gray;
+}
