@@ -22,7 +22,7 @@ The primary drive behind the development was to use it as a kind of a primitive 
 
 ## How to use
 
-Define polygol options
+Define polycol options
 ```javascript
 polycolOptions = {
     data : [
