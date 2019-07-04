@@ -11,7 +11,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 map.fitBounds([[59.64831609639064, 28.542480468750004],
             [57.941098851575376, 21.950683593750004]]);
 
-// these are drawn as geojson, so conversion is necessary
+// these coordinates are as geojson, so conversion is necessary
 h = L.GeoJSON.coordsToLatLngs(h, 0);
 i = L.GeoJSON.coordsToLatLngs(i, 0);
 i_dot = L.GeoJSON.coordsToLatLngs(i_dot, 0);
@@ -24,14 +24,15 @@ polycolOptions = {
     ]
 }
 
-L.polygon(h,
+var polycol = L.polycol(h,
     {
         color : 'black',
         fill : polycolOptions
-    }).addTo(map);
+    });
+polycol.addTo(map);
 
 
-L.polygon(i,
+L.polycol(i,
     {
         color : 'rgb(100,100,100)',
         fill : {
@@ -49,7 +50,7 @@ L.polygon(i,
     }).addTo(map);
 
 
-L.polygon(i_dot,
+L.polycol(i_dot,
     {
         color : 'transparent',
         fill : {

@@ -1,4 +1,5 @@
 
+
 # Leaflet Polycol
 
 ## Demo
@@ -8,11 +9,11 @@ https://rightdroid.bitbucket.io/leaflet-polycol/
 
 ![example](https://i.imgur.com/wkxGLgw.png)
 
-With **leaflet-polycol**, you can fill a single polygon with multiple colors. Polycol uses canvas' *createLinearGradient* and only works when using Leaflet's Canvas renderer (*preferCanvas : true*).
+With **leaflet-polycol**, you can fill a single polygon with multiple colors, divided percentually by the data you pass. Polycol uses canvas' *createLinearGradient* and only works when using Leaflet's Canvas renderer (*preferCanvas : true*).
 
 The primary drive behind the development was to use it as a kind of a primitive choropleth for a single polygon - to fill a polygon percentually with colors defined in legend.
 
-***Warning***: Polycol overwrites `L.Canvas.__fillStroke` function.
+***Note***: Polycol fill pattern is rectangular and does not give accurate percentual visual when the polygon is round or irregular. Polycol does not actually compute the area of polygon, it just lays a rectangular gradient over it.
 
 ## Requirements
 
@@ -21,7 +22,7 @@ The primary drive behind the development was to use it as a kind of a primitive 
 
 ## How to use
 
-Pass *polycol object* to polygon's `fill` property
+Define polygol options
 ```javascript
 polycolOptions = {
     data : [
@@ -31,12 +32,28 @@ polycolOptions = {
     ]
 }
 ```
+---
+Initialize a polycol with polycolOptions passed to fill property
 ```javascript
-colorfulPolygon = L.polygon(h,
+var polycol = L.polycol(coords,
     {
         color : 'black',
         fill : polycolOptions
-    }).addTo(map);
+    })
+```
+or
+```javascript
+var polycol = new L.Polygon(coords,
+    {
+        color : 'black',
+        fill : polycolOptions
+    })
+```
+
+---
+Add to map:
+```javascript
+polycol.addTo(map);
 ```
 
 ## Options
@@ -90,14 +107,15 @@ polycolOptions = {
     ]
 }
 
-L.polygon(h,
+var polycol = L.polycol(coords1,
     {
         color : 'black',
         fill : polycolOptions
-    }).addTo(map);
+    });
+polycol.addTo(map);
 
 
-L.polygon(i,
+L.polycol(coords2,
     {
         color : 'rgb(100,100,100)',
         fill : {
@@ -115,7 +133,7 @@ L.polygon(i,
     }).addTo(map);
 
 
-L.polygon(i_dot,
+L.polycol(coords3,
     {
         color : 'transparent',
         fill : {
