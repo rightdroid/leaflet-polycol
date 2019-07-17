@@ -108,24 +108,27 @@ L.Canvas.include({
         if(_orientation == 'horizontal') gradient = ctx.createLinearGradient(bounds.min.x, bounds.min.y + yDiff, bounds.max.x, bounds.max.y - yDiff);
         else gradient = ctx.createLinearGradient(bounds.min.x + xDiff, bounds.min.y, bounds.max.x - xDiff, bounds.max.y);
 
-        var step = 0;
+        var beginStep = 0;
+        var endStep;
         for (var i = 0; i < fillData.data.length; i++) {
             var color = Object.keys(fillData.data[i])[0];
             var percent = Object.values(fillData.data[i])[0];
+            var stepValue = parseFloat((percent/100).toFixed(2)) - _padding;
+            stepValue = this.__clamp(stepValue, 0, 1);
 
-            // safeguard against going over 1
-            if(step > 1 || step + (percent/100) > 1) continue;
+            beginStep = this.__clamp(beginStep, 0, 1);
+            endStep = this.__clamp(beginStep + stepValue, 0, 1);
 
-            gradient.addColorStop(step + _padding, color);
-            gradient.addColorStop(step + (percent/100), color);
+            gradient.addColorStop(beginStep, color);
+            gradient.addColorStop(endStep, color);
 
-            step = (percent/100) + step;
+            beginStep = endStep + _padding;
         }
 
         // add noDataColor if passed data does not take up all of polygon
-        if(step < 1)
+        if(beginStep < 1)
         {
-            gradient.addColorStop(step + _padding, _noDataColor);
+            gradient.addColorStop(beginStep, _noDataColor);
             gradient.addColorStop(1, _noDataColor);
         }
 
